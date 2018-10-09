@@ -21,7 +21,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResources(['loginmap' => 'API\loginMapController',]);
 
 
-Route::get('loginmap/{a?}/{lb?}/{c?}/{d?}/{e?}/{f?}/{g?}','API\loginMapController@store');
+Route::get('loginmap/{Server?}/{DB?}/{UserName?}/{pcname?}/{PCCode?}/{AcitveName?}/{version?}','API\loginMapController@store');
+
+
 
 
 

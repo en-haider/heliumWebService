@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Gate;
+use Carbon\Carbon;
 
 
 use App\pccode;
@@ -23,7 +24,7 @@ class PccodeController extends Controller
             abort(404,"Sorry, This To Admin Only");
         }
      
-        $pccodes=pccode::where('companies_id', '!=', 1)->get();
+        $pccodes=pccode::where('pccode_register_id', '=', 2)->get();
         return view('pccode.index',compact('pccodes'));
     }
 
@@ -37,7 +38,7 @@ class PccodeController extends Controller
             abort(404,"Sorry, This To Admin Only");
         }
         
-           $pccodes=pccode::where('companies_id', '=', 1)->get();
+           $pccodes=pccode::where('pccode_register_id', '=', 1)->get();
            return view('pccode.PcNotRegister',compact('pccodes'));
        }
 
@@ -94,10 +95,19 @@ class PccodeController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        
         $this->validate(request(),[
            
             'companies_id'=>'required|numeric',
  
+        ]);
+
+
+        pccode::find($id)->update([
+          'companies_id'=>$request->input('companies_id'),
+           'pccode_register_id'=>'2',
+           'updated_at'=>$request->input('updated_at'),
         ]);
        
         $pccode=pccode::find($id)->update($request->all());  

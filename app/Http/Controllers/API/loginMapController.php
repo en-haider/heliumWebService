@@ -71,7 +71,7 @@ class loginMapController extends Controller
                 'l_db'=>$order['Server'],   
                 'l_username	'=>$order['UserName'], 
                 'l_version'=>$order['version'], 
-                'pccodes_id'=>$pccode->GetPCcodeId($PCCode,$AcitveName,$pcname)
+                'pccode_id'=>$pccode->GetPCcodeId($PCCode,$AcitveName,$pcname)
             ]);
             
         }

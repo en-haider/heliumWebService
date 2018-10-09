@@ -135,7 +135,7 @@ company
 		  <tr>
 				
             <th>{{$pccodes->pc_activename}}</th>
-			<?php  $user =loginmap::where('pccodes_id', $pccodes->id)->get()->last();?>
+			<?php  $user =loginmap::where('pccode_id', $pccodes->id)->get()->last();?>
 			<th>@isset($user->l_username) {{$user->l_username}} @endisset</th>
 			<th>@isset($user->l_version) {{$user->l_version}}@endisset  </th>
 			<th>@isset($user->l_version)  {{$company->get_DateLastLogin($user->created_at) }}  @endisset </th>

@@ -44,12 +44,15 @@ use App\loginmap;
            
                 
                 <!--<th>Support Name</th>-->
-                <th>PC ActiveName</th>    
-                <th>PC User Name</th>       
+                <th>PC ActiveName</th>   
+                <th>PC Name</th>  
+                <th>PC User Name</th> 
+
                 <th>Company Name</th>
+
                 <th>Helium Version</th>
                 <th>Last Login</th>
-                <th></th>              
+                <th> </th>              
             
             </tr>
         </thead>
@@ -62,12 +65,17 @@ use App\loginmap;
             @foreach($pccodes as $pccode)
             <tr>
             <td>{{$pccode->pc_activename}}</td>
-            <td></td>
-            <td>{{companies::find($pccode->companies_id)->co_name}} </td>
-            <td>{{loginmap::where('pccodes_id',$pccode->id)->get()->pluck('l_version')->last()}}</td>
-            <td>{{loginmap::where('pccodes_id',$pccode->id)->get()->pluck('l_date')->last()}}</td>
-            <td> {!!Html::linkRoute('pcs.edit',' Edite ',array($pccode->id),array('class'=>'btn btn-primary legitRipple'))!!} </td>
+            <td>{{$pccode->pc_name}}</td>
+            <td>{{loginmap::where('pccode_id',$pccode->id)->get()->pluck('l_username')->last()}}<td>
+
+
+            <td>{{companies::find($pccode->companies_id)->co_name}}</td>
+
+            <td>{{loginmap::where('pccode_id',$pccode->id)->get()->pluck('l_version')->last()}}</td>
             
+            <td>{{loginmap::where('pccode_id',$pccode->id)->get()->pluck('l_date')->last()}}</td>
+            <td> {!!Html::linkRoute('pcs.edit',' Edite ',array($pccode->id),array('class'=>'btn btn-primary legitRipple'))!!} </td>
+              
             </tr>
             @endforeach
 

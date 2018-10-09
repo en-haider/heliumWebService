@@ -9,7 +9,7 @@ class pccode extends Model
 {
 
     protected $fillable = [
-     'companies_id','pc_code','pc_activename','pc_name',
+     'companies_id','pc_code','pc_activename','pc_name','pccode_register_id'
     ];
   
     public function company()
@@ -43,7 +43,7 @@ class pccode extends Model
                 'pc_code'=>$PCCode,  
                 'pc_activename'=>$AcitveName,   
                 'pc_name'=>$pcname, 
-                'companies_id'=>'1', 
+                'pccode_register_id'=>'1', 
              
             ]);
 

@@ -14,6 +14,7 @@ use App\loginmap;
 @endsection
 
 
+
 	 @section('content') <!-- Content area -->
 	<div class="content">
 		<!-- Form horizontal -->
@@ -54,7 +55,7 @@ use App\loginmap;
 						<div class="form-group">
 							{{Form::label('PC User Name', 'PC User Name', ['class' => 'control-label col-lg-2'])}}
 							<div class="col-lg-10">							
-							<input type="text" value="{{loginmap::where('pccodes_id',$pccode->id)->get()->pluck('l_username')->last()}}" class="form-control" disabled>
+							<input type="text" value="" class="form-control" disabled>
 							</div>
 						</div>
 
@@ -62,7 +63,7 @@ use App\loginmap;
 									<div class="form-group">
 							{{Form::label('PC  Name', 'PC  Name', ['class' => 'control-label col-lg-2'])}}
 							<div class="col-lg-10">
-							{!! Form::text('',null, array('disabled' => 'disabled','class'=>'form-control','rows' => 5, 'cols' => 5,'required'=>'','display'=>'display','maxlength'=>'255')) !!}
+							{!! Form::text('pc_name',null, array('disabled' => 'disabled','class'=>'form-control','rows' => 5, 'cols' => 5,'required'=>'','display'=>'display','maxlength'=>'255')) !!}
   
 							</div>
 						</div>
@@ -71,7 +72,7 @@ use App\loginmap;
 						<div class="form-group">
 							{{Form::label('DB Name', 'DB Name', ['class' => 'control-label col-lg-2'])}}
 							<div class="col-lg-10">
-							<input type="text" value="{{loginmap::where('pccodes_id',$pccode->id)->get()->pluck('l_db')->last()}}" class="form-control" disabled>
+							<input type="text" value="{{$pccode->loginmap()->get()->last()->l_db}}" class="form-control" disabled>
 							</div>
 						</div>
 
@@ -79,7 +80,7 @@ use App\loginmap;
 						<div class="form-group">
 							{{Form::label('Server Name', 'Server Name', ['class' => 'control-label col-lg-2'])}}
 							<div class="col-lg-10">
-							<input type="text" value="{{loginmap::where('pccodes_id',$pccode->id)->get()->pluck('l_server')->last()}}" class="form-control" disabled>
+							<input type="text" value="{{$pccode->loginmap()->get()->last()->l_server}}" class="form-control" disabled>
   
 							</div>
 						</div>
@@ -87,30 +88,26 @@ use App\loginmap;
 							<div class="form-group">
 							{{Form::label('Helium Version', 'Last Login', ['class' => 'control-label col-lg-2'])}}
 							<div class="col-lg-10">
-							<input type="text" value="{{loginmap::where('pccodes_id',$pccode->id)->get()->pluck('l_version')->last()}}" class="form-control" disabled>
+							<input type="text" value="{{$pccode->loginmap()->get()->last()->l_date}}" class="form-control" disabled>
   
 							</div>
 						</div>
 
 
 
-							<div class="form-group">
-							{{Form::label('Last Login', 'Last Login', ['class' => 'control-label col-lg-2'])}}
-							<div class="col-lg-10">
-							<input type="text" value="{{loginmap::where('pccodes_id',$pccode->id)->get()->pluck('l_date')->last()}}" class="form-control" disabled>
-  
-							</div>
+				
 
 							<br/>
 								<div class="form-group">
-                            {{Form::label('title', 'Company Support', ['class' => 'control-label col-lg-2'])}}
+                            {{Form::label('title', 'PC Company ', ['class' => 'control-label col-lg-2'])}}
 							<div class="col-lg-10">
 								<select class="form-control" name="companies_id" required>
                                
 								<option value="{{$pccode->companies_id}}" selected>
-								<?php echo $com_name =($com_name=companies::find($pccode->companies_id) ) ?  $com_name->co_name : null;	?>
+						
 								</option>	
-		
+							
+								<option value="" selected>Select Company</option>
                                     @foreach(companies::all() as $company)	
 											<option value="{{$company->id}}">
                                                 {{$company->co_name}}
@@ -132,7 +129,7 @@ use App\loginmap;
 
 					
 						<div class="text-right">
-							<button class="btn btn-primary legitRipple" type="submit">Update <i class="icon-arrow-right14 position-right"></i></button>
+							<button class="btn btn-primary legitRipple" type="submit">Register <i class="icon-arrow-right14 position-right"></i></button>
 						</div>
 					</fieldset>
 				{!!Form::close()!!}

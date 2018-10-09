@@ -36,7 +36,7 @@ class companies extends Model
          $pccode=$this->hasMany(pccode::class)->get();
          
         //Get last login of company
-         $login_map= loginmap::whereIn('pccodes_id',$pccode->pluck('id'))->orderBy('l_date', 'desc')->first(); 
+         $login_map= loginmap::whereIn('pccode_id',$pccode->pluck('id'))->orderBy('l_date', 'desc')->first(); 
    
          return $login_map;
 
@@ -50,7 +50,7 @@ class companies extends Model
         {
             $pccode=$this->hasMany(pccode::class)->get();
 
-        $feedback=CompanyFeedback::whereIn('pccodes_id',$pccode->pluck('id'))->get(); 
+        $feedback=CompanyFeedback::whereIn('pccode_id',$pccode->pluck('id'))->get(); 
       
    
            
@@ -71,7 +71,7 @@ class companies extends Model
            else
            {
      
-            $login_map= loginmap::whereIn('pccodes_id',$pccode)->orderBy('l_date', 'desc')->first(); 
+            $login_map= loginmap::whereIn('pccode_id',$pccode)->orderBy('l_date', 'desc')->first(); 
       
                 return $login_map;
 

@@ -39,14 +39,3 @@ Route::get('/pccode/{post}','PostsController@show');
 
 });
 
-
-/*
-if(Gate::allows('admin-only',Auth::user()))
-{
-  
-}
-else
-{
-    return false
-}
-*/
