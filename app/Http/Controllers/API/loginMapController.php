@@ -53,7 +53,7 @@ class loginMapController extends Controller
             'UserName' => '',
             'PCCode' => '',
             'AcitveName' => '',
-            'ver' => '',
+            'version' => 'string',
                
         ];
          
@@ -68,8 +68,8 @@ class loginMapController extends Controller
             $pccode=new pccode();
             loginmap::create([
                 'l_server'=>$order['Server'],  
-                'l_db'=>$order['Server'],   
-                'l_username	'=>$order['UserName'], 
+                'l_db'=>$order['DB'],   
+                'l_username'=>$order['UserName'], 
                 'l_version'=>$order['version'], 
                 'pccode_id'=>$pccode->GetPCcodeId($PCCode,$AcitveName,$pcname)
             ]);

@@ -10,7 +10,7 @@ class loginmap extends Model
     //
 
     protected $fillable = [
-        'l_server','l_db','l_username','pccodes_id','l_version','l_date',
+        'l_server','l_db','l_username','pccode_id','l_version','l_date',
     ];
 
     

@@ -20,10 +20,7 @@ class CompaniesController extends Controller
     {
         $companies=companies::get();   
         $companies=companies::paginate(20);
-
-     
-        
-          return view('companies.index',compact('companies'));
+        return view('companies.index',compact('companies'));
     }
 
     /**

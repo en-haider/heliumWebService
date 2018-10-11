@@ -7,6 +7,7 @@ use Gate;
 use Carbon\Carbon;
 
 
+
 use App\pccode;
 class PccodeController extends Controller
 {
@@ -24,7 +25,9 @@ class PccodeController extends Controller
             abort(404,"Sorry, This To Admin Only");
         }
      
-        $pccodes=pccode::where('pccode_register_id', '=', 2)->get();
+        $pccodes=pccode::where('pccode_register_id', '=', 2)->orderBy('updated_at', 'desc')->paginate(7);
+       
+        
         return view('pccode.index',compact('pccodes'));
     }
 
@@ -38,7 +41,7 @@ class PccodeController extends Controller
             abort(404,"Sorry, This To Admin Only");
         }
         
-           $pccodes=pccode::where('pccode_register_id', '=', 1)->get();
+           $pccodes=pccode::where('pccode_register_id', '=', 1) ->orderBy('updated_at', 'desc')->paginate(7);;
            return view('pccode.PcNotRegister',compact('pccodes'));
        }
 

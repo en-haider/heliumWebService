@@ -4,9 +4,10 @@ use App\support_type;
 use App\companies;
 use App\Support;
 use App\gov;
+use Carbon\Carbon;
 
 ?>
-
+<?php echo'hkhj'. $carbon = new Carbon();?>
 @extends('layouts.master')
 
 @section('main_page')

@@ -59,7 +59,7 @@ company
 									<li><a href="#v_1_6">PC Number <span class="text-muted text-regular pull-right" style="color:red">{{$company->pccode->count()}} </span></a></li>
 								
 									<li><a href="#v_1_6">Version <span class="text-muted text-regular pull-right" style="color:red"> {{$company->LastLogin()->l_version}}</span></a></li>
-									<li><a href="#v_1_6">Last Login <span class="text-muted text-regular pull-right" style="color:red"> {{$company->LastLogin()->l_date}}</span></a></li>
+									<li><a href="#v_1_6">Last Login <span class="text-muted text-regular pull-right" style="color:red"> {{$company->get_DateLastLogin($company->LastLogin()->created_at)}}</span></a></li>
 								
 									</ul>
 								

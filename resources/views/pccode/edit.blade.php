@@ -80,15 +80,14 @@ use App\loginmap;
 						<div class="form-group">
 							{{Form::label('Server Name', 'Server Name', ['class' => 'control-label col-lg-2'])}}
 							<div class="col-lg-10">
-							<input type="text" value="{{$pccode->loginmap()->get()->last()->l_server}}" class="form-control" disabled>
-  
+							<input type="text" value="{{$pccode->loginmap()->get()->last()->l_server}}" class="form-control" disabled> 
 							</div>
 						</div>
 
 							<div class="form-group">
 							{{Form::label('Helium Version', 'Last Login', ['class' => 'control-label col-lg-2'])}}
 							<div class="col-lg-10">
-							<input type="text" value="{{$pccode->loginmap()->get()->last()->l_date}}" class="form-control" disabled>
+							<input type="text" value="{{$pccode->loginmap()->get()->last()->created_at}}" class="form-control" disabled>
   
 							</div>
 						</div>
@@ -106,8 +105,16 @@ use App\loginmap;
 								<option value="{{$pccode->companies_id}}" selected>
 						
 								</option>	
-							
+								
+								@if($pccode->pccode_register_id==2)					
+								<option value="{{companies::find($pccode->companies_id)->id}}" selected>{{companies::find($pccode->companies_id)->co_name}}</option>
+								
+
+								@else
 								<option value="" selected>Select Company</option>
+								@endif
+
+
                                     @foreach(companies::all() as $company)	
 											<option value="{{$company->id}}">
                                                 {{$company->co_name}}
@@ -129,7 +136,14 @@ use App\loginmap;
 
 					
 						<div class="text-right">
-							<button class="btn btn-primary legitRipple" type="submit">Register <i class="icon-arrow-right14 position-right"></i></button>
+							<button class="btn btn-primary legitRipple" type="submit">
+							@if($pccode->pccode_register_id==1)	 
+							Register
+						
+							 @else
+								Update
+							@endif
+							 <i class="icon-arrow-right14 position-right"></i></button>
 						</div>
 					</fieldset>
 				{!!Form::close()!!}

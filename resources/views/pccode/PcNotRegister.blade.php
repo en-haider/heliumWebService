@@ -65,7 +65,7 @@ use App\loginmap;
             <td>{{$pccode->pc_name}}</td>
             <td>{{loginmap::where('pccode_id',$pccode->id)->get()->pluck('l_username')->last()}}</td>
             <td>{{loginmap::where('pccode_id',$pccode->id)->get()->pluck('l_version')->last()}}</td>
-            <td>{{loginmap::where('pccode_id',$pccode->id)->get()->pluck('l_date')->last()}}</td>
+            <td>{{$pccode->get_DateLastLogin(loginmap::where('pccode_id',$pccode->id)->get()->pluck('created_at')->last())}}</td>
             <td> {!!Html::linkRoute('pcs.edit','Register',array($pccode->id),array('class'=>'btn btn-primary legitRipple'))!!}  </td>
             </tr>
             @endforeach
@@ -75,6 +75,7 @@ use App\loginmap;
 
         </tbody>
     </table>
+    <div class="text-center">{!!$pccodes->links();!!}</div>
 </div>
 <!-- /basic datatable -->
 @endsection
